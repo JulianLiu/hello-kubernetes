@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: hello-kubernetes
 spec:
-  replicas: 3
+  replicas: 2
   strategy:
     type: RollingUpdate
   template:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-kubernetes
-        image: datawire/hello-kubernetes:1.0
+        image: julianliu/hello-kubernetes:latest
         resources:
           limits:
             cpu: "0.1"

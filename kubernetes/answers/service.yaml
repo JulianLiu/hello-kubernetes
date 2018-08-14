@@ -4,9 +4,9 @@ kind: Service
 metadata:
   name: hello-kubernetes
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: hello-kubernetes
   ports:
-  - port: 80
+  - port: 5000
     targetPort: http-api
