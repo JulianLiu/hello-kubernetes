@@ -1,0 +1,10 @@
+pipeline:
+  docker:
+    image: plugins/docker
+    secrets: [ docker_username, docker_password ]
+    repo: julianliu/hello-kubernetes
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    tags: latest
