@@ -1,11 +1,8 @@
 pipeline:
   docker:
     image: plugins/docker
+    secrets: [ docker_username, docker_password ]
     privileged: true
     repo: julianliu/hello-kubernetes
-    username:
-      from_secret: docker_username
-    password:
-      from_secret: docker_password
     tags: latest
 
