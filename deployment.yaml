@@ -27,6 +27,7 @@ spec:
       containers:
       - name: hello-kubernetes
         image: julianliu/hello-kubernetes:latest
+        imagePullPolicy: Always
         resources:
           limits:
             cpu: "0.1"

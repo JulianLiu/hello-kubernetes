@@ -10,3 +10,8 @@ pipeline:
     tags:
       - latest
       - ${DRONE_COMMIT_SHA}
+  deploy:
+    image: sh4d1/drone-kubernetes
+    kubernetes_template: deployment.yml
+    kubernetes_namespace: owlting-julian
+    secrets: [kubernetes_server, kubernetes_cert, kubernetes_token]
