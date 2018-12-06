@@ -3,5 +3,7 @@ pipeline:
     image: plugins/docker
     secrets: [ docker_username, docker_password ]
     repo: julianliu/hello-kubernetes
-    tags: latest
+    tags:
+      - latest
+      - ${DRONE_COMMIT_SHA}
 
