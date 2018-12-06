@@ -10,8 +10,12 @@ pipeline:
     tags:
       - latest
       - ${DRONE_COMMIT_SHA}
-  deploy:
-    image: sh4d1/drone-kubernetes
-    kubernetes_template: deployment.yaml
-    kubernetes_namespace: owlting-julian
-    secrets: [kubernetes_server, kubernetes_cert, kubernetes_token]
+  #deploy:
+  #  image: sh4d1/drone-kubernetes
+  #  kubernetes_template: deployment.yaml
+  #  kubernetes_namespace: owlting-julian
+  #  secrets: [kubernetes_server, kubernetes_cert, kubernetes_token]
+  kubectl:
+    image: komljen/drone-kubectl-helm
+    secrets: [ kubernetes_server, kubernetes_cert, kubernetes_token ]
+    kubectl: "apply -f deployment.yaml"
