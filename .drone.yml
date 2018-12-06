@@ -11,10 +11,9 @@ pipeline:
       - latest
       - ${DRONE_COMMIT_SHA}
   test:
-    image: plugins/gcr
-    secrets: [google_credentials]
+    image: asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA}
     commands:
-      - docker run --rm asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA} pytest
+      - pytest
   predeploy:
     image: busybox:latest
     commands:
