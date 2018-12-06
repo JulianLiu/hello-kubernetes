@@ -10,4 +10,3 @@ pipeline:
     tags:
       - latest
       - ${DRONE_COMMIT_SHA}
-
