@@ -11,9 +11,13 @@ pipeline:
       - latest
       - ${DRONE_COMMIT_SHA}
   predeploy:
-    image: docker:busybox
+    image: busybox:latest
     commands:
       - sed -i "s/hello-kubernetes:latest/hello-kubernetes:${DRONE_COMMIT_SHA}/g" deployment.yaml
+    when:
+      event: push
+      branch:
+        - master
   kubectl:
     image: komljen/drone-kubectl-helm
     secrets: [ kubernetes_server, kubernetes_cert, kubernetes_token ]
