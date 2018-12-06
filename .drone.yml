@@ -8,3 +8,4 @@ pipeline:
     password:
       from_secret: docker_password
     tags: latest
+
