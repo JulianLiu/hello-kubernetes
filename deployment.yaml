@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: hello-kubernetes
-        image: julianliu/hello-kubernetes:latest
+        image: asia.gcr.io/owlting-gcp/hello-kubernetes:latest
         imagePullPolicy: Always
         resources:
           limits:
@@ -35,6 +35,3 @@ spec:
         ports:
         - name: http-api
           containerPort: 5000
-        env:
-        - name: DEPLOY_UPTIME_TIME
-          value: 'TIME_OF_DEPLOYMENT'

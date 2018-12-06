@@ -1,4 +1,8 @@
 pipeline:
+  prebuild:
+    image: docker:git
+    commands:
+      - sed -i "s/hello-kubernetes:latest/hello-kubernetes:${DRONE_COMMIT_SHA}/g" deployment.yaml
   docker:
     #image: plugins/docker
     #secrets: [ docker_username, docker_password ]
