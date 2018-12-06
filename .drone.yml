@@ -6,8 +6,7 @@ pipeline:
     image: plugins/gcr
     registry: asia.gcr.io
     repo: owlting-gcp/hello-kubernetes
-    json_key:
-      from_secret: google_credentials
+    secrets: [google_credentials]
     tags:
       - latest
       - ${DRONE_COMMIT_SHA}
