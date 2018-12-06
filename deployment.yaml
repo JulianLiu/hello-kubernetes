@@ -35,3 +35,6 @@ spec:
         ports:
         - name: http-api
           containerPort: 5000
+        env:
+        - name: DEPLOY_UPTIME_TIME
+          value: 'TIME_OF_DEPLOYMENT'
