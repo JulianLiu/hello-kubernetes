@@ -11,9 +11,9 @@ pipeline:
       - latest
       - ${DRONE_COMMIT_SHA}
   test:
-    image: asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA}
-    commands:
-      - pytest
+    image: komljen/drone-kubectl-helm
+    secrets: [ kubernetes_server, kubernetes_cert, kubernetes_token ]
+    kubectl: "run dronetest --rm -i --tty --image asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA} -- pytest"
   predeploy:
     image: busybox:latest
     commands:
