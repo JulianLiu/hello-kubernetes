@@ -10,10 +10,17 @@ pipeline:
     tags:
       - latest
       - ${DRONE_COMMIT_SHA}
-  test:
+
+  pytest:
+    image: asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA}
+    commands:
+      - pytest
+  
+  kubetest:
     image: komljen/drone-kubectl-helm
     secrets: [ kubernetes_server, kubernetes_cert, kubernetes_token ]
     kubectl: "run -n owlting-julian podtest --rm --restart=Never -i --limits memory=128M --image asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA} -- pytest"
+
   predeploy:
     image: busybox:latest
     commands:
@@ -22,6 +29,7 @@ pipeline:
       event: push
       branch:
         - master
+
   kubectl:
     image: komljen/drone-kubectl-helm
     secrets: [ kubernetes_server, kubernetes_cert, kubernetes_token ]
