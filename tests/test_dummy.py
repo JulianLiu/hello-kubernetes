@@ -14,7 +14,7 @@ class DummyTestCase(unittest.TestCase):
         pass
 
     def test_dummy(self):
-        assert False == True
+        assert True == True
 
 
 if __name__ == '__main__':
