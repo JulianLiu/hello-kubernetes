@@ -1,9 +1,10 @@
 pipeline:
-  #pytest:
-  #  image: python:3-alpine
-  #  commands:
-  #    - pip install -r requirements.txt
-  #    - pytest
+  pytest:
+    image: python:3-alpine
+    commands:
+      - pip install -r requirements.txt
+      - pytest
+      - rm -rf tests/__pycache__
 
   docker:
     #image: plugins/docker
