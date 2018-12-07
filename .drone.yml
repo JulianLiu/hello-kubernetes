@@ -13,7 +13,7 @@ pipeline:
   test:
     image: komljen/drone-kubectl-helm
     secrets: [ kubernetes_server, kubernetes_cert, kubernetes_token ]
-    kubectl: "run -n owlting-julian podtest --rm -i --limits memory=64M --image asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA} -- pytest"
+    kubectl: "run -n owlting-julian podtest --rm -i --limits memory=128M --image asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA} -- pytest"
   predeploy:
     image: busybox:latest
     commands:
