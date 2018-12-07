@@ -1,4 +1,10 @@
 pipeline:
+  pytest:
+    image: python:3-alpine
+    commands:
+      - pip install -r requirements.txt
+      - pytest
+
   docker:
     #image: plugins/docker
     #secrets: [ docker_username, docker_password ]
@@ -11,7 +17,7 @@ pipeline:
       - latest
       - ${DRONE_COMMIT_SHA}
 
-  pytest:
+  dockertest:
     image: asia.gcr.io/owlting-gcp/hello-kubernetes:${DRONE_COMMIT_SHA}
     commands:
       - pytest
