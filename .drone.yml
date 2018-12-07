@@ -4,6 +4,7 @@ pipeline:
     commands:
       - pip install -r requirements.txt
       - pytest
+      - rm -rf __pycache__
 
   docker:
     #image: plugins/docker
